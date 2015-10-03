@@ -9,6 +9,7 @@
 
 	#include <SDL2/SDL.h>
 	#include <SDL2/SDL_image.h>
+	#include <iostream>
 	#include <Button.h>
 	class VideoManager{
 		SDL_Renderer *render;

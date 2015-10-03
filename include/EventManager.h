@@ -1,9 +1,10 @@
 #ifndef EVENT_MANAGER_H
 	#define EVENT_MANAGER_H
-	#include <SDL2/SDL.h>
-	#include <StateManager.h>
 	#include <Button.h>
+	#include <SDL2/SDL.h>
 	#include <vector>
+	#include <iostream>
+	class Button;
 	class EventManager{
 		static EventManager *pImplementation;
 		SDL_Event *event;

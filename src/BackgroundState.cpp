@@ -1,13 +1,6 @@
 #include <BackgroundState.h>
 
-#ifdef DEBUG_FLAG
-	#include <iostream>
-#endif
-
 BackgroundState::BackgroundState(){
-	#ifdef DEBUG_FLAG
-		std::cout<<"Constructor of BackgroundState "<<this<<std::endl;
-	#endif
 	backgroundElements = new std::vector<BackgroundElement*>;
 	BackgroundElement *temp;
 	for(int c=0;c<SCREEN_HEIGHT/SPACE_COEFICIENT-6;c++){
@@ -64,7 +57,4 @@ BackgroundState::~BackgroundState(){
 		delete *i;
 	}
 	delete backgroundElements;
-	#ifdef DEBUG_FLAG
-		std::cout<<"Destructor of BackgroundState "<<this<<std::endl;
-	#endif
 }

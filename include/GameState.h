@@ -1,14 +1,14 @@
 #ifndef GAME_STATE_H
 	#define GAME_STATE_H
 	#include <State.h>
-	#include <Button.h>
 	#include <vector>
-	#include <EventManager.h>
-	#include <VideoManager.h>
 
+	class Button;
+
+	class Button;
 	class GameState: public State{
-		// FieldButtonType turn;
-		// FieldButtonType **field;
+		bool turn;
+		int **field;
 		std::vector<Button*> *buttons;
 	public:
 		GameState();
@@ -17,6 +17,6 @@
 		void onPassive();
 		void onRender();
 		void onPhysicTick(){};
-		void onClick(int, int);
+		void mark(int, int);
 	};
 #endif

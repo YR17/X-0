@@ -5,7 +5,8 @@
 	#include <EventManager.h>
 	#include <Button.h>
 	#include <vector>
-	#include <GameState.h>
+	
+	class GameState;
 
 	class MenuState: public State{
 		int x, y, w, h;

@@ -1,7 +1,9 @@
 #ifndef BUTTON_H
 	#define BUTTON_H
 	#include <string>
-	#include <StateManager.h>
+
+	#include <GameState.h>
+
 	class Button{
 	protected:
 		bool active;
@@ -24,12 +26,13 @@
 		void onClick();
 	};
 
-	template<typename T>
-	class CallerButton: public Button{
-		T caller;
+	class FieldButton: public Button{
+		int xPos;
+		int yPos;
+		GameState *state;
 	public:
-		CallerButton(int, int, int, int,std::string, T);
-		~CallerButton(){};
+		FieldButton(int, int, int, int,std::string, int, int, GameState*);
+		~FieldButton(){};
 		void onClick();
 	};
 #endif

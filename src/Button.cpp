@@ -1,4 +1,5 @@
 #include <Button.h>
+#include <StateManager.h>
 #include <iostream>
 using namespace std;
 
@@ -28,18 +29,18 @@ void StateButton::onClick(){
 		StateManager::getImplementation()->pop();
 }
 
-template<typename T>
-CallerButton<T>::CallerButton(int x, int y, int w, int h, std::string text, T caller){
+FieldButton::FieldButton(int x, int y, int w, int h, std::string text, int xPos, int yPos, GameState *state){
 	this->active = false;
 	this->x = x;
 	this->y = y;
 	this->w = w;
 	this->h = h;
 	this->text = text;
-	this->caller = caller;
+	this->xPos = xPos;
+	this->yPos = yPos;
+	this->state = state;
 }
 
-template<typename T>
-void CallerButton<T>::onClick(){
-	caller();
+void FieldButton::onClick(){
+	state->mark(xPos, yPos);
 }

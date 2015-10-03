@@ -15,9 +15,6 @@ void VideoManager::resetRenderDrawColor(){
 }
 
 VideoManager::VideoManager(){
-	#ifdef DEBUG_FLAG
-		cout<<"Constructor of VideoManager "<<this<<endl;
-	#endif
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
 	window = SDL_CreateWindow("X&0", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
@@ -87,7 +84,7 @@ void VideoManager::drawRect(int x, int y, int w, int h, int r, int g, int b){
 
 void VideoManager::drawButton(Button* button){
 	if(button->isActive())fillRect(button->x, button->y, button->w, button->h, 0, 0, 0, 200);
-	else fillRect(button->x, button->y, button->w, button->h, 0, 0, 0, 255);
+	else fillRect(button->x, button->y, button->w, button->h, 0, 0, 0, 230);
 }
 
 void VideoManager::presentRender(){
@@ -97,7 +94,4 @@ void VideoManager::presentRender(){
 VideoManager::~VideoManager(){
 	SDL_DestroyTexture(cross);
 	SDL_DestroyTexture(zero);
-	#ifdef DEBUG_FLAG
-		cout<<"Destructor of VideoManager "<<this<<endl;
-	#endif
 }

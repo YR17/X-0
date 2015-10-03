@@ -14,7 +14,7 @@
 		GameState();
 		~GameState(){};
 		void onActive();
-		void onPassive(){};
+		void onPassive();
 		void onRender();
 		void onPhysicTick(){};
 		void onClick(int, int);

@@ -47,7 +47,10 @@ void EventManager::checkEvent(){
 			break;
 			case SDL_MOUSEBUTTONUP:{
 				for(auto i = bindedButtons->begin();i<bindedButtons->end();i++){
-					if(event->button.button==SDL_BUTTON_LEFT&&checkMousePosition(event->button.x, event->button.y, *i))(*i)->onClick();
+					if(event->button.button==SDL_BUTTON_LEFT&&checkMousePosition(event->button.x, event->button.y, *i)){
+						(*i)->onClick();
+						break;
+					}
 				}
 			}
 			break;
@@ -76,4 +79,15 @@ EventManager::~EventManager(){
 	}
 	delete bindedButtons;
 	delete event;
+}
+
+void EventManager::debug(string str=" "){
+	cout<<str<<endl;
+	cout<<bindedButtons->size()<<endl;
+	if(!bindedButtons->empty()){
+		for(auto i = bindedButtons->begin();i<bindedButtons->end();i++){
+			cout<<*i<<endl;
+		}
+	}
+	cout<<endl;
 }

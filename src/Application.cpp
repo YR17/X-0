@@ -25,7 +25,7 @@ void Application::start(){
 		videoManager->presentRender();
 		stateManager->onPhysicTick();
 		eventManager->checkEvent();
-		SDL_Delay(1000/40);
+		SDL_Delay(1000/60);
 	}
 }
 

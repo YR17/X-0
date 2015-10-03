@@ -17,5 +17,7 @@
 		void bindButton(Button*);
 		void unbindButton(Button*);
 		void unbindAll();
+
+		void debug(std::string);
 	};
 #endif

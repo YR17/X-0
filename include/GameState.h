@@ -10,6 +10,7 @@
 		bool turn;
 		int **field;
 		std::vector<Button*> *buttons;
+		void check();
 	public:
 		GameState();
 		~GameState(){};
@@ -17,6 +18,6 @@
 		void onPassive();
 		void onRender();
 		void onPhysicTick(){};
-		void mark(int, int);
+		void mark(int, int, Button*);
 	};
 #endif

@@ -42,5 +42,5 @@ FieldButton::FieldButton(int x, int y, int w, int h, std::string text, int xPos,
 }
 
 void FieldButton::onClick(){
-	state->mark(xPos, yPos);
+	state->mark(xPos, yPos, this);
 }

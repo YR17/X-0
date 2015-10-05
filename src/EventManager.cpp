@@ -64,8 +64,11 @@ void EventManager::bindButton(Button *button){
 
 void EventManager::unbindButton(Button *button){
 	for(auto i = bindedButtons->begin();i<bindedButtons->end();i++){
-		if(*i==button)bindedButtons->erase(i);
-		return;
+		if(*i==button){
+			if(button->isActive())button->onMouseOut();
+			bindedButtons->erase(i);
+			return;
+		}
 	}
 }
 

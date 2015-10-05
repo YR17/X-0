@@ -24,7 +24,6 @@ void GameState::onActive(){
 	for(int c=0;c<3;c++){
 		for(int c1=0;c1<3;c1++){
 			buttons->push_back(new FieldButton(170 + 50*c1, 170+50*c, 40, 40, "test", c1, c, this));
-			// buttons->push_back(new StateButton(170 + 50*c1, 170+50*c, 40, 40, "test", NULL));
 		}
 	}
 	buttons->push_back(new StateButton(170, 330, 140, 30, "Exit", NULL));
@@ -55,7 +54,14 @@ void GameState::onRender(){
 	}
 }
 
-void GameState::mark(int x, int y){
+void GameState::mark(int x, int y, Button *button){
+	EventManager::getImplementation()->unbindButton(button);
+	turn = !turn;
 	if(turn)field[x][y] = 1;
 	else field[x][y] = 2;
+	check();
+}
+
+void GameState::check(){
+	
 }

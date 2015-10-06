@@ -1,8 +1,6 @@
 #ifndef MENU_STATE_H
 	#define MENU_STATE_H
 	#include <State.h>
-	#include <VideoManager.h>
-	#include <EventManager.h>
 	#include <Button.h>
 	#include <vector>
 	

@@ -1,6 +1,5 @@
 #ifndef STATE_H
 	#define STATE_H
-	// #define DEBUG_FLAG
 	class State{
 	public:
 		State(){};

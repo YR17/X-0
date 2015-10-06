@@ -12,6 +12,8 @@
 	enum BackgroundElementType{ZERO, CROSS};
 
 	struct BackgroundElement{
+
+		
 		BackgroundElementType backgroundElementType;
 		int r, g, b;
 		float x, y, angle, rotationSpeed;

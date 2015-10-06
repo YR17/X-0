@@ -56,12 +56,38 @@ void GameState::onRender(){
 
 void GameState::mark(int x, int y, Button *button){
 	EventManager::getImplementation()->unbindButton(button);
-	turn = !turn;
-	if(turn)field[x][y] = 1;
-	else field[x][y] = 2;
+	if(turn)field[x][y] = CROSS;
+	else field[x][y] = ZERO;
 	check();
+	turn = !turn;
+}
+
+bool GameState::check(int x, int y, int length, Mark mark, Direction direction){
+	if(x>=0&&y>=0&&x<3&&y<3&&field[x][y]==mark){
+		std::cout<<x<<'\t'<<y<<"="<<field[x][y]<<std::endl;
+		if(field[x][y]==CROSS)std::cout<<"CROSS"<<std::endl;
+		else if(field[x][y]==ZERO)std::cout<<"ZERO"<<std::endl;
+		else std::cout<<"NONE"<<std::endl;
+		if(length==0)return true;
+		else{
+			switch(direction){
+				case RIGHT: return check(x+1, y, length-1, mark, direction);
+				break;
+				case DOWN: return check(x, y-1, length-1, mark, direction);
+				break;
+				case DOWN_LEFT: return check(x-1, y-1, length-1, mark, direction);
+				break;
+				case DOWN_RIGHT: return check(x+1, y-1, length-1, mark, direction);
+				break;
+			}
+		}
+	}
+	else return false;
 }
 
 void GameState::check(){
-	
+	if(check(0, 0, 1, CROSS, RIGHT)){
+		std::cout<<"ok"<<std::endl;
+	}
+	else std::cout<<"no"<<std::endl;
 }

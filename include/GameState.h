@@ -3,13 +3,19 @@
 	#include <State.h>
 	#include <vector>
 
-	class Button;
+	#define WIN_LENGTH 3	
+
 
 	class Button;
 	class GameState: public State{
+
+		enum Direction{RIGHT=0, DOWN, DOWN_LEFT, DOWN_RIGHT};
+		enum Mark{NONE=0, CROSS, ZERO};
+		
 		bool turn;
 		int **field;
 		std::vector<Button*> *buttons;
+		bool check(int, int, int, Mark, Direction);
 		void check();
 	public:
 		GameState();

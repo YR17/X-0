@@ -1,5 +1,6 @@
 #include <MenuState.h>
-
+#include <EventManager.h>
+#include <VideoManager.h>
 #include <iostream>
 using namespace std;
 

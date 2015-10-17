@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdlib.h>
 
+using namespace std;
 
 GameState::GameState(){
 	buttons = new std::vector<Button*>;
@@ -56,38 +57,74 @@ void GameState::onRender(){
 
 void GameState::mark(int x, int y, Button *button){
 	EventManager::getImplementation()->unbindButton(button);
-	if(turn)field[x][y] = CROSS;
-	else field[x][y] = ZERO;
+	if(turn)field[x][y] = 1;
+	else field[x][y] = 2;
 	check();
 	turn = !turn;
 }
 
-bool GameState::check(int x, int y, int length, Mark mark, Direction direction){
-	if(x>=0&&y>=0&&x<3&&y<3&&field[x][y]==mark){
-		std::cout<<x<<'\t'<<y<<"="<<field[x][y]<<std::endl;
-		if(field[x][y]==CROSS)std::cout<<"CROSS"<<std::endl;
-		else if(field[x][y]==ZERO)std::cout<<"ZERO"<<std::endl;
-		else std::cout<<"NONE"<<std::endl;
-		if(length==0)return true;
-		else{
-			switch(direction){
-				case RIGHT: return check(x+1, y, length-1, mark, direction);
-				break;
-				case DOWN: return check(x, y-1, length-1, mark, direction);
-				break;
-				case DOWN_LEFT: return check(x-1, y-1, length-1, mark, direction);
-				break;
-				case DOWN_RIGHT: return check(x+1, y-1, length-1, mark, direction);
-				break;
+void GameState::check(){
+	for(int c=0;c<3;c++){
+		int result = 0;
+		int verticalSum = 0, horizontalSum = 0, mainDiagonalSum = 0, sideDiagonalSum =0;
+		bool verticalFlag = true, horizontalFlag = true, mainDiagonalFlag = true, sideDiagonalFlag = true;
+		for(int c1=0;c1<3;c1++){
+			if(!field[c][c1])verticalFlag = false;
+			if(!field[c1][c])horizontalFlag = false;
+			if(!field[c1][c1])mainDiagonalFlag = false;
+			if(!field[2-c1][2-c1])sideDiagonalFlag = false;
+			verticalSum+=field[c][c1];
+			horizontalSum+=field[c1][c];
+			mainDiagonalSum+=field[c1][c1];
+			sideDiagonalSum+=field[2-c1][2-c1];
+		}
+		if(verticalFlag){
+			if(verticalSum==3||verticalSum==6){
+				if(verticalSum==3){
+					cout<<"CROSS WINS"<<endl;
+					exit(0);
+				}
+				else{
+					cout<<"ZEROS WINS"<<endl;
+					exit(0);
+				}
+			}
+		}
+		if(horizontalFlag){
+			if(horizontalSum==3||horizontalSum==6){
+				if(horizontalSum==3){
+					cout<<"CROSS WINS"<<endl;
+					exit(0);
+				}
+				else{
+					cout<<"ZEROS WINS"<<endl;
+					exit(0);
+				}
+			}
+		}
+		if(mainDiagonalFlag){
+			if(mainDiagonalSum==3||mainDiagonalSum==6){
+				if(mainDiagonalSum==3){
+					cout<<"CROSS WINS"<<endl;
+					exit(0);
+				}
+				else{
+					cout<<"ZEROS WINS"<<endl;
+					exit(0);
+				}
+			}
+		}
+		if(sideDiagonalFlag){
+			if(sideDiagonalSum==3||sideDiagonalSum==6){
+				if(sideDiagonalSum==3){
+					cout<<"CROSS WINS"<<endl;
+					exit(0);
+				}
+				else{
+					cout<<"ZEROS WINS"<<endl;
+					exit(0);
+				}
 			}
 		}
 	}
-	else return false;
-}
-
-void GameState::check(){
-	if(check(0, 0, 1, CROSS, RIGHT)){
-		std::cout<<"ok"<<std::endl;
-	}
-	else std::cout<<"no"<<std::endl;
 }

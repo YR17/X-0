@@ -32,7 +32,7 @@ void StateManager::pushBackgroundState(State* state){
 }
 
 void StateManager::push(State *state){
-	if(state==NULL&&state==curentState){
+	if(state==NULL||state==curentState){
 		return;
 	}
 	states->push_back(curentState);

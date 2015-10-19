@@ -1,4 +1,6 @@
 #include <GameState.h>
+#include <StateManager.h>
+#include <WinState.h>
 #include <EventManager.h>
 #include <VideoManager.h>
 #include <Button.h>
@@ -40,7 +42,7 @@ void GameState::onPassive(){
 }
 
 void GameState::onRender(){
-	for(std::vector<Button*>::iterator i = buttons->begin();i<buttons->end();i++){
+	for(auto i = buttons->begin();i<buttons->end();i++){
 		VideoManager::getImplementation()->drawButton(*i);
 	}
 	for(int c=0;c<3;c++){
@@ -81,48 +83,56 @@ void GameState::check(){
 		if(verticalFlag){
 			if(verticalSum==3||verticalSum==6){
 				if(verticalSum==3){
-					cout<<"CROSS WINS"<<endl;
-					exit(0);
+					// cout<<"CROSS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("CROSS WINS"));
 				}
 				else{
-					cout<<"ZEROS WINS"<<endl;
-					exit(0);
+					// cout<<"ZEROS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("ZEROS WINS"));
 				}
 			}
 		}
 		if(horizontalFlag){
 			if(horizontalSum==3||horizontalSum==6){
 				if(horizontalSum==3){
-					cout<<"CROSS WINS"<<endl;
-					exit(0);
+					// cout<<"CROSS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("CROSS WINS"));
 				}
 				else{
-					cout<<"ZEROS WINS"<<endl;
-					exit(0);
+					// cout<<"ZEROS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("ZEROS WINS"));
 				}
 			}
 		}
 		if(mainDiagonalFlag){
 			if(mainDiagonalSum==3||mainDiagonalSum==6){
 				if(mainDiagonalSum==3){
-					cout<<"CROSS WINS"<<endl;
-					exit(0);
+					// cout<<"CROSS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("CROSS WINS"));
 				}
 				else{
-					cout<<"ZEROS WINS"<<endl;
-					exit(0);
+					// cout<<"ZEROS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("ZEROS WINS"));
 				}
 			}
 		}
 		if(sideDiagonalFlag){
 			if(sideDiagonalSum==3||sideDiagonalSum==6){
 				if(sideDiagonalSum==3){
-					cout<<"CROSS WINS"<<endl;
-					exit(0);
+					// cout<<"CROSS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("CROSS WINS"));
 				}
 				else{
-					cout<<"ZEROS WINS"<<endl;
-					exit(0);
+					// cout<<"ZEROS WINS"<<endl;
+					// exit(0);
+					StateManager::getImplementation()->push(new WinState("ZEROS WINS"));
 				}
 			}
 		}

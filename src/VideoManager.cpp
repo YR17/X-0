@@ -1,6 +1,7 @@
 #include <VideoManager.h>
 
 #include <iostream>
+#include <SDL2/SDL_image.h>
 using namespace std;
 
 VideoManager *VideoManager::pImplementation = NULL;
@@ -17,6 +18,7 @@ void VideoManager::resetRenderDrawColor(){
 VideoManager::VideoManager(){
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
+	TTF_Init();
 	window = SDL_CreateWindow("X&0", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	resetRenderDrawColor();
@@ -25,6 +27,8 @@ VideoManager::VideoManager(){
 	SDL_FreeSurface(temp);
 	temp = IMG_Load("../data/images/Zero.png");
 	zero = SDL_CreateTextureFromSurface(render, temp);
+	font = TTF_OpenFont("../data/fonts/UbuntuMono-B.ttf", 48);
+
 	SDL_FreeSurface(temp);
 }
 
@@ -85,6 +89,23 @@ void VideoManager::drawRect(int x, int y, int w, int h, int r, int g, int b){
 void VideoManager::drawButton(Button* button){
 	if(button->isActive())fillRect(button->x, button->y, button->w, button->h, 0, 0, 0, 200);
 	else fillRect(button->x, button->y, button->w, button->h, 0, 0, 0, 230);
+	drawText(button->x, button->y, button->w, button->h, button->text);
+}
+
+void VideoManager::drawText(int x, int y, int w, int h, string text){
+	SDL_Color color;
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+	color.a = 0;
+	SDL_Surface *temp = TTF_RenderText_Solid(font, text.c_str(), color);
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(render, temp);
+	SDL_Rect position;
+	position.x = x + (w - 18 * text.length())/2;
+	position.y = y + (h-18)/2;
+	position.h = 18;
+	position.w = 18 * text.length();
+	SDL_RenderCopy(render, texture, NULL, &position);
 }
 
 void VideoManager::presentRender(){

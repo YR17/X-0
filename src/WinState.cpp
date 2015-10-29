@@ -23,7 +23,8 @@ void WinState::onPassive(){
 }
 
 void WinState::onRender(){
-		VideoManager::getImplementation()->drawRect(60, 170, 360, 140, 0, 0, 0);
+	VideoManager::getImplementation()->drawRect(60, 170, 360, 140, 0, 0, 0);
+	VideoManager::getImplementation()->drawText(60, 170, 360, 40, text);
 	for(auto i = buttons->begin();i<buttons->end();i++){
 		VideoManager::getImplementation()->drawButton(*i);
 	}

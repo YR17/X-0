@@ -30,8 +30,8 @@ void MenuState::onRender(){
 }
 
 void MenuState::onActive(){
-	buttons->push_back(new StateButton(140, 145, 200, 30, "Play vs Computer", NULL));
-	buttons->push_back(new StateButton(140, 185, 200, 30, "Play vs Player", new GameState));
+	buttons->push_back(new StateButton(140, 145, 200, 30, "One player", NULL));
+	buttons->push_back(new StateButton(140, 185, 200, 30, "Two players", new GameState));
 	buttons->push_back(new StateButton(140, 225, 200, 30, "Play online", NULL));
 	buttons->push_back(new StateButton(140, 265, 200, 30, "Settings", NULL));
 	buttons->push_back(new StateButton(140, 305, 200, 30, "Exit", NULL));

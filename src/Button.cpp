@@ -44,3 +44,18 @@ FieldButton::FieldButton(int x, int y, int w, int h, std::string text, int xPos,
 void FieldButton::onClick(){
 	state->mark(xPos, yPos, this);
 }
+
+CallerButton::CallerButton(int x, int y, int w, int h, string text, State* state, int number){
+	this->active = false;
+	this->x = x;
+	this->y = y;
+	this->w = w;
+	this->h = h;
+	this->text = text;
+	this->callerState = state;
+	this->number = number;
+}
+
+void CallerButton::onClick(){
+	callerState->onClick(number);
+}

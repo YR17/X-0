@@ -35,4 +35,13 @@
 		~FieldButton(){};
 		void onClick();
 	};
+
+	class CallerButton: public Button{
+		State *callerState;
+		int number;
+	public:
+		CallerButton(int, int, int, int, std::string, State*, int);
+		virtual ~CallerButton(){};
+		void onClick();
+	};
 #endif

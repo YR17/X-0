@@ -14,5 +14,6 @@
 		void onPhysicTick(){};
 		void onActive();
 		void onPassive();
+		void onClick(int){};
 	};
 #endif

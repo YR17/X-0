@@ -19,6 +19,7 @@
 		void onPassive();
 		void onRender();
 		void onPhysicTick(){};
+		void onClick(int){};
 		void mark(int, int, Button*);
 	};
 #endif

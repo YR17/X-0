@@ -29,5 +29,6 @@
 		void onEvent(){};
 		void onActive(){};
 		void onPassive(){};
+		void onClick(int){};
 	};
 #endif

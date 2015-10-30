@@ -8,5 +8,6 @@
 		virtual void onPhysicTick() = 0;
 		virtual void onActive() = 0;
 		virtual void onPassive() = 0;
+		virtual void onClick(int) = 0;
 	};
 #endif

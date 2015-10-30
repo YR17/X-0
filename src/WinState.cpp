@@ -1,5 +1,8 @@
 #include <WinState.h>
+#include <MenuState.h>
+#include <BackgroundState.h>
 #include <EventManager.h>
+#include <StateManager.h>
 #include <VideoManager.h>
 using namespace std;
 
@@ -9,8 +12,8 @@ WinState::WinState(string text){
 }
 
 void WinState::onActive(){
-	buttons->push_back(new StateButton(70, 260, 140, 30, "New Game", NULL));
-	buttons->push_back(new StateButton(270, 260, 140, 30, "Menu", NULL));
+	buttons->push_back(new CallerButton(70, 260, 140, 30, "New Game", this, 1));
+	buttons->push_back(new CallerButton(270, 260, 140, 30, "Menu", this, 2));
 
 	for(auto i = buttons->begin();i<buttons->end();i++){
 		EventManager::getImplementation()->bindButton(*i);
@@ -23,9 +26,18 @@ void WinState::onPassive(){
 }
 
 void WinState::onRender(){
-	VideoManager::getImplementation()->drawRect(60, 170, 360, 140, 0, 0, 0);
-	VideoManager::getImplementation()->drawText(60, 170, 360, 40, text);
+	VideoManager::getImplementation()->fillRect(40, 190, 400, 60, 0, 0, 0, 230);
+	VideoManager::getImplementation()->drawText(50, 200, 380, 40, text);
 	for(auto i = buttons->begin();i<buttons->end();i++){
 		VideoManager::getImplementation()->drawButton(*i);
+	}
+}
+
+void WinState::onClick(int number){
+	StateManager::getImplementation()->popAll();
+	StateManager::getImplementation()->push(new MenuState());
+	StateManager::getImplementation()->pushBackgroundState(new BackgroundState());
+	if(number==1){
+		StateManager::getImplementation()->push(new GameState());
 	}
 }

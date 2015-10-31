@@ -22,7 +22,7 @@ BackgroundState::BackgroundState(){
 
 void BackgroundState::onRender(){
 	BackgroundElement *temp;
-	for(std::vector<BackgroundElement*>::iterator i = backgroundElements->begin();i<backgroundElements->end();i++){
+	for(auto i = backgroundElements->begin();i<backgroundElements->end();i++){
 		temp = *i;
 		if(temp->backgroundElementType==ZERO){
 			VideoManager::getImplementation()->drawZero(temp->x, temp->y, temp->r, temp->g, temp->b);
@@ -34,8 +34,7 @@ void BackgroundState::onRender(){
 }
 
 void BackgroundState::onPhysicTick(){
-	BackgroundElement *temp;
-	for(std::vector<BackgroundElement*>::iterator i = backgroundElements->begin();i<backgroundElements->end();i++){
+	for(auto i = backgroundElements->begin();i<backgroundElements->end();i++){
 		temp = *i;
 		if(temp->x>SCREEN_WIDTH){
 			temp->x = -MARK_WIDTH;
@@ -53,7 +52,7 @@ void BackgroundState::onPhysicTick(){
 }
 
 BackgroundState::~BackgroundState(){
-	for(std::vector<BackgroundElement*>::iterator i = backgroundElements->begin();i<backgroundElements->end();i++){
+	for(auto i = backgroundElements->begin();i<backgroundElements->end();i++){
 		delete *i;
 	}
 	delete backgroundElements;

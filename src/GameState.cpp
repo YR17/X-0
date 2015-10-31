@@ -67,9 +67,15 @@ void GameState::mark(int x, int y, Button *button){
 
 void GameState::check(){
 	for(int c=0;c<3;c++){
-		int result = 0;
-		int verticalSum = 0, horizontalSum = 0, mainDiagonalSum = 0, sideDiagonalSum =0;
-		bool verticalFlag = true, horizontalFlag = true, mainDiagonalFlag = true, sideDiagonalFlag = true;
+		result = 0;
+		verticalSum = 0;
+		horizontalSum = 0;
+		mainDiagonalSum = 0;
+		sideDiagonalSum =0;
+		verticalFlag = true;
+		horizontalFlag = true;
+		mainDiagonalFlag = true;
+		sideDiagonalFlag = true;
 		for(int c1=0;c1<3;c1++){
 			if(!field[c][c1])verticalFlag = false;
 			if(!field[c1][c])horizontalFlag = false;

@@ -6,9 +6,6 @@
 using namespace std;
 
 MenuState::MenuState(){
-	#ifdef DEBUG_FLAG
-		cout<<"Constructor of MenuState "<<this<<endl;
-	#endif
 	x = 120;
 	y = 70;
 	w = 240;
@@ -51,7 +48,4 @@ MenuState::~MenuState(){
 		delete *i;
 	}
 	delete buttons;
-	#ifdef DEBUG_FLAG
-		cout<<"Destructor of MenuState "<<this<<endl;
-	#endif
 }

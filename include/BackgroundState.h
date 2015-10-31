@@ -21,6 +21,7 @@
 
 	class BackgroundState: public State{
 	std::vector<BackgroundElement*> *backgroundElements;
+	BackgroundElement *temp;
 	public:
 		BackgroundState();
 		~BackgroundState();

@@ -12,6 +12,10 @@
 		int **field;
 		std::vector<Button*> *buttons;
 		void check();
+
+		int result;
+		int verticalSum, horizontalSum, mainDiagonalSum, sideDiagonalSum;
+		bool verticalFlag, horizontalFlag, mainDiagonalFlag, sideDiagonalFlag;
 	public:
 		GameState();
 		~GameState(){};

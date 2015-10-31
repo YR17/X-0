@@ -12,11 +12,8 @@ EventManager *EventManager::getImplementation(){
 }
 
 EventManager::EventManager(){
-	#ifdef DEBUG_FLAG
-		std::cout<<"Constructor of EventManager "<<this<<std::endl;
-	#endif
 	event = new SDL_Event();
-	bindedButtons = new std::vector<Button*>;
+	bindedButtons = new vector<Button*>;
 }
 
 bool EventManager::checkMousePosition(int x, int y, Button* button){

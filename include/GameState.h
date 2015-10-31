@@ -15,10 +15,10 @@
 
 		int result;
 		int verticalSum, horizontalSum, mainDiagonalSum, sideDiagonalSum;
-		bool verticalFlag, horizontalFlag, mainDiagonalFlag, sideDiagonalFlag;
+		bool verticalFlag, horizontalFlag, mainDiagonalFlag, sideDiagonalFlag, isDraw;
 	public:
 		GameState();
-		~GameState(){};
+		~GameState();
 		void onActive();
 		void onPassive();
 		void onRender();

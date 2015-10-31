@@ -66,6 +66,7 @@ void GameState::mark(int x, int y, Button *button){
 }
 
 void GameState::check(){
+	isDraw = true;
 	for(int c=0;c<3;c++){
 		result = 0;
 		verticalSum = 0;
@@ -77,6 +78,7 @@ void GameState::check(){
 		mainDiagonalFlag = true;
 		sideDiagonalFlag = true;
 		for(int c1=0;c1<3;c1++){
+			if(field[c][c1]==0)isDraw = false;
 			if(!field[c][c1])verticalFlag = false;
 			if(!field[c1][c])horizontalFlag = false;
 			if(!field[c1][c1])mainDiagonalFlag = false;
@@ -143,4 +145,17 @@ void GameState::check(){
 			}
 		}
 	}
+	if(isDraw)StateManager::getImplementation()->push(new WinState("DRAW"));
+}
+
+GameState::~GameState(){
+	for(int c=0;c<3;c++){
+		delete field[c];
+	}
+	delete field;
+	for(auto i=buttons->begin();i<buttons->end();i++){
+		delete *i;
+	}
+	buttons->clear();
+	delete buttons;
 }

@@ -18,6 +18,11 @@
 		static VideoManager *pImplementation;
 		VideoManager();
 		void resetRenderDrawColor();
+
+		SDL_Rect rect;
+		SDL_Color color;
+		SDL_Surface *temp;
+		SDL_Texture *texture;
 	public:
 		static VideoManager *getImplementation();
 		~VideoManager();

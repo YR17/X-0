@@ -29,7 +29,7 @@ void GameState::onActive(){
 			buttons->push_back(new FieldButton(170 + 50*c1, 170+50*c, 40, 40, " ", c1, c, this));
 		}
 	}
-	buttons->push_back(new StateButton(170, 330, 140, 30, "Exit", NULL));
+	buttons->push_back(new StateButton(170, 330, 140, 30, "Back", NULL));
 
 	for(auto i = buttons->begin();i<buttons->end();i++){
 		EventManager::getImplementation()->bindButton(*i);

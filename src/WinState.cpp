@@ -12,7 +12,7 @@ WinState::WinState(string text){
 }
 
 void WinState::onActive(){
-	buttons->push_back(new CallerButton(70, 260, 140, 30, "New Game", this, 1));
+	buttons->push_back(new CallerButton(70, 260, 140, 30, "New", this, 1));
 	buttons->push_back(new CallerButton(270, 260, 140, 30, "Menu", this, 2));
 
 	for(auto i = buttons->begin();i<buttons->end();i++){
